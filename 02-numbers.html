@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic math in JavaScript — numbers and operators</title>
+</head>
+<body>
+    <script>
+
+     /* 
+
+     // Zahlentypen  //
+
+     Integers = Ganzkommazahlen 10, 400, -40
+     Floating point number (floats) = Gleitkommazahlen 12.5, 56.773 (Punkt benutzen statt Komma)
+     Doubles = Gleitkommazahlen mit vielen Nachkommastellen
+
+     Der Datentyp für Nummern in Javascript ist number.
+     Für sehr große Zahlen wird der Datentyp BigInt verwendet.
+
+     // Nützliche Number Methoden //
+
+     Das Number Objekt repräsentiert in Javascript alle Standard Nummern und verfügt über nützliche
+     Methoden
+    */
+    
+   
+    // Um Zahlen mit vielen Dezimalstellen auf wenige Dezimalstellen zu kürzen wird die toFixed() Methode verwendet.
+    // In die Klammer wird die Anzahl der Dezimalstellen geschrieben.    
+
+    const lotsOfDecimal = 1.766584958675746364;
+    lotsOfDecimal;
+    const twoDecimalPlaces = lotsOfDecimal.toFixed(2);
+    twoDecimalPlaces;
+     
+
+    // strings in Zahlen konvertieren. 
+
+    // Die Nummer ist ein string. DIe Rechnung funktioniert nicht. 
+    let myNumber = '74';
+    myNumber += 3; // 743
+
+    // mit typeof kann der Datentyp getestet werden
+    typeof myNumber; // string
+
+    // Um den String zu konvertieren und dir Rechnung zu ermöglichen 
+    // kann die Variable in den Number() constructor gesetzt werden
+    Number(myNumber) + 3; // 77
+
+
+    /*
+    
+    // Rechenoperatoren //
+
+    + = Addition
+    - = Subtraktion
+    * = Multiplikation
+    / = Division
+    % = Modulo / Remainder
+    ** = Exponent
+
+    // Vorrang der Operatoren //
+
+    Punkt vor Strich, wenn keine Klammern gesetzt sind. Ansonsten zuerst der Inhalt der Klammern
+
+    // Increment / Decrement //
+
+    ++ = Increment
+    -- = Decrement
+
+    Der Operator kann sowohl vor als auch nach der Zahl/Variablen stehen
+    myNumber++;
+    ++myNumber;
+
+    // Zuweisungsoperator //
+
+    = Zuweisung
+    x = 4;
+
+    += Additionszuweisung
+    x += 4;	x = x + 4;
+
+    -= Subtraktionszuweisung
+    x -= 3;	x = x - 3;
+
+    *= Multiplikationszuweisung
+    x *= 3;	x = x * 3;
+
+    /= Divisionszuweisung
+    x /= 5;	x = x / 5;
+  */
+
+let x = 3;
+let y = 4;
+x *= y; // x = x * y = 12
+
+  /*
+  
+  // Vergleichsoperatoren //
+
+  Vergleichsoperatoren werden verwendet, um wahr/falsch Tests durchzuführen und aufgrund der Ergebnisse zu handeln
+
+  ===  Strikte Gleichheit
+  !==  Strikte Ungleichheit
+  <    Kleiner als
+  >    Größer als
+  <=   Kleiner als oder gleich
+  >=   Größer als oder gleich
+
+  ==   Gleichheit
+  !=   Ungleichheit
+
+  === / !===   testet die Gleichheit von Wert und Datentyp
+  == / !=      testet die Gleichheit vom Wert und nicht vom Datenstyp
+
+  */
+
+
+
+
+    </script> 
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variablen</title>
+</head>
+<body>
+
+
+    <script>
+
+// Benutze const, wenn du kannst, benutze let, wenn du musst      
+
+/*        
+Ein Unterschied zwischen var und let ist das 'var hoisting'. Bei var kann eine Variable aufgerufen
+werden bevor sie deklariert wurde, wie im Code oben ersichtlich. Bei let funktioniert dies nicht.
+Das initialieren einer Variablen bevor diese deklariert wurde macht den Code kompliziert und schwer leserlich.
+*/
+
+// Die Variable myName wird initialisiert (aufgerufen), obwohl Sie noch nicht aufgerufen wurde.
+myName = 'Chris';
+
+function logName() {
+  console.log(myName);
+}
+
+logName();
+
+// Die Variable wird deklariert, obwohl sie vorher schon initialisiert wurde.
+var myName;
+
+/*        
+Ein weiterer Unterschied zwischen var und let ist das bei var eine Variable so oft deklariert (erstellt) werden kann,
+wie man möchte. Bei let kann eine Variable nur einmal deklariert werden. 
+Das redeklarieren von Variablen ist unnötig und führt nur zu Verwirrungen.
+
+*/
+
+// Die Variable myName wird zweimal hintereinander deklariert. Dies würde bei let nicht funktionieren.
+var myName = 'Chris';
+var myName = 'Bob';
+
+// Bei let muss der Inhalt der Variablen geändert werden
+let yourName = 'Chris';
+yourName = 'Bob';
+
+  </script>
+</body>
+</html>

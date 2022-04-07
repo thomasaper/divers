@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Handling text — strings in JavaScript</title>
+</head>
+<body>
+
+    <!-- String - Zusammenkettung in einer Anwendung-->
+    <button>Press me</button>
+
+    <script>
+
+        /*
+
+        // Strings //
+
+        Strings sind Zeichenketten. Sie werden deklariert und initilaisierst wie Zahlen mit dem Unterschied, dass Sie in 
+        Anführungsstriche gesetzt werden.
+
+        const single = 'Dies ist ein Beispiel';
+        const double = "Dies ist ein Beispiel";
+
+        const sglDbl = 'Would you eat a "fish supper"?';
+        const dblSgl = "I'm feeling blue.";
+
+
+
+
+        // Teile von strings ausklammern (escaping characters) //
+
+        Um Zeichen in einer Zeichenkette als nicht zum Code gehörig zu markieren, wird ein backslash davor gesetzt.
+
+        const bigmouth = 'I\'ve got no right to take my place...';
+
+
+        // Strings zusammenketten / Concatenating strings //
+
+        Um verschiedene strings zusammenzusetzen werden Template-Literale verwendet. Ein Template-Literal wird wie ein
+        normaler string verwendet mit der Ausnahme, dass backticks (`) anstelle von Anführungszeichen (', ") verwendet werden.
+
+        */
+
+        const hello = `Hello`;
+        
+        // Template-Literale können mit ${} als Variablen in strings eingesetzt werden 
+
+        const name = "Thomas";
+        const greeting = `Hallo ${name}`;
+        console.log(greeting); // Hallo Thomas
+
+        // Mit dieser Technik können auch zwei Variablen zusammengekettet werden
+
+        const one = "Hallo, ";
+        const two = "wie geht es dir?";
+        const joined = `${one}${two}`;
+        console.log(joined); // Hallo, wie geht es dir?
+
+
+
+        // Zusammenkettung in einer Anwendung //
+
+        // Auswahl des <button> in der html
+        const button = document.querySelector('button');
+
+        // Mir der prompt() Funktion wird der User nach dem Namen gefragt. Die Antwort wird in einer Variablen gespeichert
+        // und mit der alert() Funktion auf dem Display in einer Grüßnachricht wiedergegeben.
+        function greet() {
+        const name = prompt('What is your name?');
+        alert(`Hello ${name}, nice to see you!`);
+        }
+
+        button.addEventListener('click', greet);
+
+
+
+        // Zusammenkettung mit + //
+
+        // Strings können auch mit dem + Operator zusammengekettet werden
+
+        const greeting2 = "Hello";
+        const name2 = "Chris";
+        console.log(greeting2 + ", " + name2); // Hello, Chris
+
+        // Code mit Template-Literalen ist jedoch einfacher zu lesen
+
+        const greeting3 = "Hello";
+        const name3 = "Chris";
+        console.log(`${greeting3}, ${name3}`); // Hello, Chris
+
+
+
+        // Zahlen vs. string //
+
+        // Die Zahl wird automatisch in ein string umgewandelt.
+        const name4 = "Front ";
+        const number = 242;
+        console.log(`${name4}${number}`);
+
+        // um einen string in eine Zahl umzuwandeln
+        const myString = '123';
+        const myNum = Number(myString);
+        console.log(typeof myNum);
+
+        // um eine Zahl in einen string umzuwandeln
+        const myNum2 = 123;
+        const myString2 = myNum2.toString();
+        console.log(typeof myString2); 
+
+
+
+        // Javascript Ausdrücke in strings einfügen //
+
+        // Template-Literale können Javascript Ausdrücke und einfache Variablen enthalten
+
+        const song = "Fight the Youth";
+        const score = 9;
+        const highestScore = 10;
+        // Im zweiten Template-Literal wird eine Variable durch die andere geteilt und mal 100 genommen
+        const output = `I like the song ${song}, I gave it a score of ${score/highestScore * 100}%.`;
+        console.log(output);
+        // I like the song Fight the Youth, I gave it a score of 90%
+
+
+
+        // Template-Literale über mehrere Zeilen //
+
+        // Template-Literale respektieren Zeilenumbrüche, bei regulären strings wird dies nicht erkannt.
+
+        const output2 = `I like the song.
+I gave it a score of 90%`;
+        console.log(output2);
+        // I like the song.
+        // I gave it a score of 90%.
+
+        // Bei einem regulären string müsste man \n verwenden.
+
+        const output3 = "I like the song. \nI gave it a score of 90%";
+        console.log(output3);
+        // I like the song.
+        // I gave it a score of 90%.
+
+
+
+
+    </script>
+    
+</body>
+</html>
