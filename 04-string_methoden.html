@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Useful string methods</title>
+</head>
+<body>
+    
+    <script>
+        /////////////////////////////////
+        ///// Strings sind Objekte /////
+        ///////////////////////////////
+
+        // Sobald ein string erstellt wird, wird die Variable ein Objekt und verfügt über bestimmte Eigenschaften und Methoden
+
+        const string = "This is my string";
+
+
+
+        /////////////////////////////////////////////////
+        ///// Die Länge von einem String bestimmen /////
+        ///////////////////////////////////////////////
+
+        // Dies kann mit der length Eigenschaft gemacht werden
+
+        const browserType = "mozilla";
+        browserType.length;
+        console.log(browserType.length); // 7
+
+
+
+        /////////////////////////////////////////////////////////
+        ///// Einen bestimmten string Character wiedergeben /////
+        ////////////////////////////////////////////////////////
+
+        // Dies wird gemacht, indem man nach der Variablen die Zahl des zu bestimmenden Charakters in eckige Klammern setzt
+
+        browserType[0];
+
+        // Um den letzten Charakter von jedem string zu erhalten kann diese TEchnik mit der length Eigenschaft kombiniert werden
+
+        browserType[browserType.length-1];
+
+
+
+        ////////////////////////////////////////////////////////
+        ///// Testen ob ein string einen substring enthält /////
+        ///////////////////////////////////////////////////////
+
+        // Manchmal möchte man einen kleineren string in einem größeren string (substring) finden. Dies wird mit der include() Methode getan
+
+        // Es gibt wahr zurück, wenn der string den substring "zilla" enthält
+        if (browserType.includes("zilla")) {
+            console.log("Found zilla!")
+        } else {
+            console.log("No zilla here!");
+        }
+
+        // Manchmal möchtest du testen, ob ein string mit einem substring beginnt oder endet. Hierfür gibt es eine Methode
+
+        // Ob er mit zilla anfängt
+        if (browserType.startsWith("zilla")) {
+            console.log("Found zilla!")
+        } else {
+            console.log("No zilla here!");
+        }
+
+        // ob er mit zilla endet
+        if (browserType.endsWith("zilla")) {
+            console.log("Found zilla!")
+        } else {
+            console.log("No zilla here!");
+        }
+
+
+
+        ///////////////////////////////////////////////////////////////////
+        ///// Die Position von einem substring in einem string finden /////
+        //////////////////////////////////////////////////////////////////
+
+        // Um die Position von einem substring in einem großen string zu finden wird die indexOf() Methode verwendet. Die Parameter sind der zu suchende substring und der Startpunkt der Suche
+
+        // Wenn der string den substring developers enthält wird das erste Auftauchen wiedergegeben, ansonsten wird -1 wiedergegeben
+        const tagline = "MDN - Resources for developers, by developers";
+        console.log(tagline.indexOf("developers")); // 20
+
+        // Hier wird -1 wiedergegeben, da kein x vorhanden ist
+        console.log(tagline.indexOf('x')); // -1
+
+        // Wie findest du nun nachfolgende substrings? Indem der Startpunkt der Suche nach dem ersten Auftauchen des substrings gesetzt wird "firstOccurence + 1"
+
+        const firstOccurence = tagline.indexOf("developers");
+        const secondOccurence = tagline.indexOf("developers", firstOccurence + 1);
+
+        console.log(firstOccurence); // 20
+        console.log(secondOccurence); // 35
+
+
+
+        ////////////////////////////////////////////////////////
+        ///// Einen substring aus einem string extrahieren /////
+        ///////////////////////////////////////////////////////
+
+        // Ein substring kann mit der slice() Methode und den Parametern Beginn und Ende extrahiert werden
+
+        console.log (browserType.slice(1, 4)) // ozi
+
+        // Wenn alle Zeichen nach dem Beginn exportiert werden sollen, wird der zweite Parameter weggelassen
+
+        browserType.slice(2); // "zilla"
+
+
+        ////////////////////////////////////////////////////////
+        ///// Nach Groß- oder Kleinschreibung konvertieren /////
+        ///////////////////////////////////////////////////////
+
+        const radData = 'My NaMe Is MuD';
+        console.log(radData.toLowerCase());
+        console.log(radData.toUpperCase());
+
+
+
+        ///////////////////////////////////////////
+        ///// Teile von einem string ersetzen /////
+        //////////////////////////////////////////
+
+        // Dies wird mit der replace() Methode und den Parametern zu ersetzender string und neuer string gemacht. Wichtig ist, das diese Methode einen neuen string erstellt und nicht den
+        // Ursprungsstring verändert
+
+        const updated = browserType.replace("moz", "van"); // "vanilla"
+        console.log (updated);
+
+        // Um den Ursprungsstring zu verändern muss man folgendermaßen vorgehen
+
+        let change = "Ich heiße Thomas";
+        change = change.replace("Thomas", "Daniel");
+
+        console.log(change); // "Ich heiße Daniel"
+
+        // Möchtest du alle substrings auf einmal ändern wird folgende Methode verwendet
+
+        let quote = "To be or not to be";
+        quote = quote.replaceAll("be", "code");
+
+        console.log(quote); // "To code or not to code"
+
+
+
+         ////////////////////
+        ////Anwendungen/////
+       ////////////////////
+
+        ////////////////////////////////////////////
+       ///// Groß-/ Kleinschreibung reparieren /////
+       ////////////////////////////////////////////
+
+       // Die strings im array cities sollen jeweils einen Großbuchstaben am Anfang und den Rest nur Kleinbuchstaben haben
+
+       const list = document.querySelector('.output ul');
+       list.innerHTML = '';
+       const cities = ['lonDon', 'ManCHESTer', 'BiRmiNGHAM', 'liVERpoOL'];
+
+       // Wir wählen mit city of cities jeden einzelnen string aus dem array aus
+       for (let city of cities) {
+       // Wir erstellen eine neue Variable in der der jeweilige string in Kleinbuchstaben gesetzt wird    
+       const lower = city.toLowerCase();
+       // Wir erstellen eine Variable in der der erste Buchstabe der zuvor erstellen Variable gesetzt wird
+       const firstLetter = lower.slice(0,1);
+       // Zuletzt kombinieren wir die beiden Variablen, wobei der erste Buchstabe in Großbuchstaben gesetzt wird.
+       const capitalized = lower.replace(firstLetter, firstLetter.toUpperCase());
+
+       const result = capitalized;
+       const listItem = document.createElement('li');
+       listItem.textContent = result;
+       list.appendChild(listItem);
+}
+
+
+
+    ///////////////////////////////////////////////////
+    ///// Neue strings aus alten Strings erzeugen /////
+    //////////////////////////////////////////////////
+
+    // Aus dem array sollen neue strings ohne Zahlenfolge und semikolon erstehen -> MAN: Manchester Piccadilly
+
+    const list = document.querySelector('.output ul');
+    list.innerHTML = '';
+    const stations = ['MAN675847583748sjt567654;Manchester Piccadilly',
+                      'GNF576746573fhdg4737dh4;Greenfield',
+                      'LIV5hg65hd737456236dch46dg4;Liverpool Lime Street',
+                      'SYB4f65hf75f736463;Stalybridge',
+                      'HUD5767ghtyfyr4536dh45dg45dg3;Huddersfield'];
+
+    // Wir wählen mit station of stations jeden einzelnen string aus dem array aus                  
+    for (let station of stations) {
+    // Wir extrahieren den dreiteiligen Buchstabencode am Anfang und speichern ihn in einer Variablen    
+    const stationNumber = station.slice(0,3);
+    // WIr bestimmen den Indexpunkt des Semikolons als Referenzpunkt und speichern ihn in einer Variablen
+    const semicolon = station.indexOf(";");
+    // Wir extrahieren den Stationsnamen nach dem Semikolon und speichern ihn in einer Variablen
+    const stationName = station.slice(semicolon + 1);
+    // Wir erstellen eine neue Varibale mit dem Statinscode und dem Stationsnamen als Template-Literal.
+    const both = `${stationNumber}: ${stationName}`; 
+
+
+    const result = both;
+    const listItem = document.createElement('li');
+    listItem.textContent = result;
+    list.appendChild(listItem);
+}
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

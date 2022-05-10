@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    
+    <script>
+
+        //////////////////////////////
+        ///// Was ist ein Array? /////
+        /////////////////////////////
+
+        // Ein array ist eine listenähnliche Aneinandereihung von Objekten. Eigentlich ein Objekt, das viele Werte in einer Liste beinhaltet.
+
+
+         ///////////////////////////////////////
+        ///// Das kreieren von einem array /////
+        ///////////////////////////////////////
+
+        // Das Beispiel unten enthält strings. Es können auch andere Datentypen wie Zahlen, Objekte und sogar andere arrays gespeichert werden.
+
+        const shopping = ["Brot", "Milch", "Käse", "Fleisch"];
+        console.log(shopping);
+
+        // Die Datentypen können auch gemischt sein.
+
+        // Das array enthält einen string, eine Zahl und ein weiteres array.
+        const random = ["tree", 795 [0, 1, 2]]
+
+
+
+        ///////////////////////////////////////////////////
+        ///// Array Teile erreichen und modifizieren /////
+        /////////////////////////////////////////////////
+
+        // Array Teile können angesprochen werden wie Buchstaben in strings. Dies wird als item Index bezeichnet. 
+
+        console.log(shopping[0]); // Brot
+
+        // Array items können auch ersetzt werden
+
+        shopping[0] = "Toastbrot";
+        console.log(shopping); // Gibt nun ["Toastbrot", "Milch", "Käse", "Fleisch"] wieder
+
+        // Ein array in einem array ist ein multidimensionales array. Es kann erreicht werden, indem zwei Zahlen in rechteckige Klammern aneinandergesetzt werden
+
+        // Es wird das multidimensionale array an dritter Stelle aufgerufen, in diesem array die dritte Zahl.
+        const multi = ['tree', 795, [0, 1, 2]];
+        console.log(multi[2][2]);
+
+
+
+        ///// Ein item in einem array finden /////
+
+        const birds = ["parrot", "falcon", "owl"];
+        console.log(birds.indexOf("owl")); // 2
+        console.log(birds.indexOf("rabbit")); // -1 wird wiedergegeben, immer wenn ein item nicht gefunden wird.
+
+
+
+        ////////////////////////////////
+        ///// items hinzufügen ////////
+        ////////////////////////////////
+
+        // Dies wird mit der push() Methode gemacht, die hinzuzufügenden items werden in Klammern gesetzt und mit komma voeinander getrennt
+
+        const cities = ["Norden", "Emden", "Aurich"];
+        cities.push("Nordhorn", "Papenburg");
+        console.log(cities); // ["Norden", "Emden", "Aurich", "Nordhorn", "Papenburg"]
+
+        // Die neue Länge des Variable wird erst wiedergebegen, wenn die Methode fertig ist. Wenn du die neue Länge in einer Variablen speichern möchtest, tue folgendes
+
+        const newLength = cities.push("Greetsiel");
+        console.log(newLength); // 4
+
+        // Um ein item an den Anfang eines arrays zu setzen, kannst du unshift() nehmen
+
+        cities.unshift("Greetsiel");
+        console.log(cities); // ["Greetsiel", Norden", "Emden", "Aurich"]
+
+
+
+
+///////////////////////////////////
+////////////// items entfernen /////
+///////////////////////////////////
+
+        // um das letzte item von dem array zu entfernen  wird die pop() Methode angewendet
+
+        cities.pop(); 
+        console.log(cities) // ["Norden", "Emden"]
+
+        // Die pop() Methode gibt das entfernte item wierder. Um dieses item in einer Variable zu speichern, tue folgendes
+
+        const removedCity = cities.pop();
+        console.log(removedCity); // Aurich
+
+        // Um das erste item zu entfernen, benutze shift()
+
+        cities.shift();
+        console.log(cities); // ["Emden", "Aurich"]
+
+        // Wenn der index eines items bekannt ist, kann das item mit splice() entfernt werden. In dem call to splice gibt es zwei Parameter. Der erste Parameter markiert
+        // den Startpunk und der zweite Parameter die Anzahl der zu entfernenden items.
+
+        const index = cities.indexOf("Emden");
+        if (index !== -1) {
+            cities.splice(index, 1);
+        }
+        console.log(cities); // ["Norden", "Aurich"]
+
+
+        /////////////////////////////////////////////////
+        ///// Jedes item in einem array ansprechen /////
+        ////////////////////////////////////////////////
+
+        // Oft möchte man jedes item in einem array ansprechen. Hierzu wird das for...of statement verwendet
+
+        for (bird of birds) {
+            console.log(bird);
+        }
+
+        // Oft möchte man die items in einem array ändern und die gänderten items in einer Variable speichern. Dies wird mit der map() Methode gemacht.
+
+        // Wir geben eine Funktion zu der map() Methode. map() spricht dann jedes item in dem array mit der Funktion an, gibt die neuen Werte in ein neues array und gibt das neue array zurück.
+
+        function double(number) {
+            return number * 2;
+        }
+
+        const numbers = [5, 2, 7, 6];
+        const doubled = numbers.map(double); // Beachte: Funktion ohne Klammern
+        console.log(doubled); // [10, 4, 14, 12]
+
+        // Manchmal möchte man ein neues array erstellen, das nur items aus dem Original array enthält, das bestimmten Testbedingungen entspricht. Dies wird mit der filter() Methode gemacht.
+        // Das array unten enthält nur strings die mehr als 8 Buchstaben besitzen
+
+        // Wie bei der map() Methode wird der filter() Methode eine Funktion gegeben. Mit dieser Funktion wird jedes item angesprochen. Nur wenn die Funktion ein true wiedergibt, wird
+        // das item in das neue array gesetzt. Zuletzt wird das neue array wiedergegeben.
+
+        function isLong(city) {
+            return city.length > 8;
+        }
+
+        const longer = cities.filter(isLong); // Beachte: Funktion ohne Klammern
+        console.log(longer); // ["Nordhorn"]
+
+
+
+        ///// Zwischen strings und array konvertieren /////
+
+        // Oft möchtest du aus Rohdaten, die dir in einem sehr großen string vorliegen, nur die nützlichen Daten in eine bessere Form (Tabelle) separieren. Dies kann mit der 
+        // split() Methode getan werden. In der einfachsten Form geht dies mit nur einem Parameter, wie dem Zeichen an dem du die strings separieren möchtest.
+
+        // 1. Nun sehen wir wie das geht. Zuerst erzeugen wir einen string.
+
+        const data = 'Manchester,London,Liverpool,Birmingham,Leeds,Carlisle';
+        
+        // 2. Nun separieren wir an jedem komma
+
+        const dataArray = data.split(",");
+        console.log(dataArray); // ['Manchester', 'London', 'Liverpool', 'Birmingham', 'Leeds', 'Carlisle']
+
+        // 3. Zuletzt finden wir die Länge von dem array heraus und lassen uns items wiedergeben.
+
+        console.log(dataArray.length); // 6
+        console.log(dataArray[0]); // Das erste item in dem array
+        console.log(dataArray [1]); // Das zweite item in dem array.
+
+        // 4. Jetzt machen wir das andersherum mit der join() Methode
+
+        // Das array wird in einen string konvertiert, die strings werden von ", " getrennt.
+
+        const commaSeparated = dataArray.join(",");
+        console.log(commaSeparated);        
+
+        // 5. toString() ist eine andere Methode, um ein array zu strings zu konvertieren. toString() scheint einfacher als join() zu sein. toString() kann jedoch nur mit Komma
+        // separieren. Bei join() kann jedes Zeichen genutzt werden.
+
+        const dogNames = ['Rocket','Flash','Bella','Slugger'];
+        console.log(dogNames.toString()); // Rocket,Flash,Bella,Slugger
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>
