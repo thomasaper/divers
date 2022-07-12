@@ -39,5 +39,21 @@ sect.appendChild(linkPara);
 // linkPara.remove();
 
 // Entfernt den node auch bei alten Browsern
-// linkPara.parentNode.removeChild(linkPara)
+linkPara.parentNode.removeChild(linkPara)
 
+
+
+// fügt inline-style elemente hinzu mit der HTMLElement.style property
+// Vorsicht! CSS styles in Javascript werden in lower camel case geschrieben! (z.Bsp. backgroundColor versus background-color)
+
+/*
+para.style.color = 'white';
+para.style.backgroundColor = 'black';
+para.style.padding = '10px';
+para.style.width = '250px';
+para.style.textAlign = 'center';
+*/
+
+
+// fügt dem <p> die Klasse .highlight hinzu, die css Regeln enthält (kein inline CSS)
+para.setAttribute('class', 'highlight');
